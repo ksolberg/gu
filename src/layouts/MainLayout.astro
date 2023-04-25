@@ -1,0 +1,77 @@
+---
+import "../styles.scss";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>GU</title>
+  </head>
+  <body>
+    <header class="absolute w-full z-10 mt-16 lg:mt-20">
+      <div class="outer">
+        <div class="inner flex gap-5 justify-between items-center">
+          <a href="#">
+            <img src="logo-white.svg" alt="logo" class="hidden lg:block" />
+            <img src="logo-white-small.svg" alt="logo" class="lg:hidden" />
+          </a>
+          <div class="flex items-center gap-10 lg:gap-12">
+            <button class="p-1">
+
+              <svg class="hidden md:block" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="7.57692" cy="8" rx="6.57692" ry="7" stroke="#000" stroke-width="1.5"></ellipse><path transform="matrix(.68474 .72879 -.68474 .72879 13.4238 15)" stroke="#000" stroke-width="1.5" d="M0-.75h9.605"></path></svg>
+            </button>
+            <div>
+              <a class="underline" href="#">NO</a> /<a href="#">EN</a>
+            </div>
+            <button class="p-1">
+              <svg width="27" height="18" fill="none" xmlns="http://www.w3.org/2000/svg"><path stroke="#000" stroke-width="1.75" d="M0 1.125h27M0 9.125h27M0 17.125h27"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="bg-gold py-10 md:py-24 mt-12 md:mt-24">
+      <div class="outer">
+        <div class="inner">
+          <img class="md:ml-2 lg:ml-6" src="logo.svg" alt="logo" />
+          <div class="inner--grid mt-10 md:mt-14">
+            <div class="col-start-1 col-end-13 md:col-start-2 md:col-end-7">
+              <address class="not-italic">
+                Gudbrandsdalens Uldvarefabrik<br />
+                Postboks 836<br />
+                2026 LILLEHAMMER
+              </address>
+              <div class="mt-10 lg:mt-14">
+                Telefon: <a class="underline" href="#">+47 61 22 15 00</a><br />
+                E-post: <a class="underline" href="#">gu@gu.no</a>
+              </div>
+            </div>
+            <div class="col-start-1 col-end-9 md:col-start-7 md:col-end-11 mt-8 md:mt-0">
+              <nav class="flex flex-col">
+                <a class="underline" href="#">Kolleksjon</a>
+                <a class="underline" href="#">Nyheter</a>
+                <a class="underline" href="#">Referanser</a>
+                <a class="underline" href="#">GU mini tekstilskole</a>
+                <a class="underline" href="#">Om oss</a>
+                <a class="underline" href="#">Kontakt</a>
+                <a class="underline" href="#">Netthandel</a>
+                <a class="underline" href="#">Bedrift</a>
+              </nav>
+            </div>
+            <div class="col-start-9 col-end-13 md:col-start-11 md:col-end-13 self-end">
+              <img class="md:w-full" src="bisnode.png" alt="bisnode" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

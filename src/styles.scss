@@ -1,0 +1,36 @@
+body {
+  @apply lg:text-xl;
+}
+
+.outer {
+  @apply container mx-auto max-w-screen-2xl px-5 lg:px-8;
+}
+
+.inner {
+  @apply max-w-screen-lg mx-auto;
+
+  &--grid {
+    @apply grid grid-cols-12 gap-5 lg:gap-8;
+  }
+
+}
+
+.button {
+  @apply inline-block px-8 py-3 lg:px-12 lg:py-5 border border-black transform transition-colors;
+
+  &:hover {
+    @apply bg-gold;
+  }
+}
+
+.link {
+  @apply inline-block border-black border-b-2 transform transition-colors;
+
+  &:hover {
+    @apply text-gold2 border-gold2;
+  }
+}
+
+.no-visual-search {
+  pointer-events: none;
+}
