@@ -17,12 +17,12 @@ const { whiteLogo, absHeader } = Astro.props
         <div class="inner flex gap-5 justify-between items-center">
           <a href="/">
             {whiteLogo && (
-              <img src="logo-white.svg" alt="logo" class="hidden lg:block" />
-              <img src="logo-white-small.svg" alt="logo" class="lg:hidden" />
+              <img src="/logo-white.svg" alt="logo" class="hidden lg:block" />
+              <img src="/logo-white-small.svg" alt="logo" class="lg:hidden" />
             )}
             {!whiteLogo && (
-              <img src="logo-black.svg" alt="logo" class="hidden lg:block" />
-              <img src="logo-black-small.svg" alt="logo" class="lg:hidden" />
+              <img src="/logo-black.svg" alt="logo" class="hidden lg:block" />
+              <img src="/logo-black-small.svg" alt="logo" class="lg:hidden" />
             )}
           </a>
           <div class="flex items-center gap-10 lg:gap-12">
@@ -47,8 +47,8 @@ const { whiteLogo, absHeader } = Astro.props
           <div class="inner">
             <div class="flex gap-5 justify-between items-center">
               <a href="/">
-                <img src="logo-black.svg" alt="logo" class="hidden lg:block" />
-                <img src="logo-black-small.svg" alt="logo" class="lg:hidden" />
+                <img src="/logo-black.svg" alt="logo" class="hidden lg:block" />
+                <img src="/logo-black-small.svg" alt="logo" class="lg:hidden" />
               </a>
               <div class="flex items-center gap-10 lg:gap-12">
                 <button class="p-1 hover:text-gold2">
@@ -120,7 +120,7 @@ const { whiteLogo, absHeader } = Astro.props
     <footer class="bg-gold py-10 md:py-24 mt-12 md:mt-24">
       <div class="outer">
         <div class="inner">
-          <img class="md:ml-2 lg:ml-6" src="logo.svg" alt="logo" />
+          <img class="md:ml-2 lg:ml-6" src="/logo.svg" alt="logo" />
           <div class="inner--grid mt-10 md:mt-14">
             <div class="col-start-1 col-end-13 md:col-start-2 md:col-end-7">
               <address class="not-italic">
@@ -146,7 +146,7 @@ const { whiteLogo, absHeader } = Astro.props
               </nav>
             </div>
             <div class="col-start-9 col-end-13 md:col-start-11 md:col-end-13 self-end">
-              <img class="md:w-full" src="bisnode.png" alt="bisnode" />
+              <img class="md:w-full" src="/bisnode.png" alt="bisnode" />
             </div>
           </div>
         </div>
