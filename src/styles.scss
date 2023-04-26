@@ -2,6 +2,10 @@
   @apply hidden;
 }
 
+html {
+  @apply scroll-smooth;
+}
+
 body {
   @apply lg:text-lg;
 }
@@ -56,4 +60,40 @@ body {
 
 .no-visual-search {
   pointer-events: none;
+}
+
+.table {
+  
+  td {
+    @apply py-[10px];
+    vertical-align: top;
+  }
+  
+  &--loose td {
+    @apply py-5;
+  }
+
+  &--lined tr:not(:last-child) td {
+    @apply border-b border-[#d4d4d4];
+  }
+
+  &--first-bold td:first-child {
+    @apply font-semibold;
+  }
+}
+
+.rte {
+  @apply text-base lg:text-lg;
+
+  h2 {
+    @apply text-2xl lg:text-3xl mb-5;
+  }
+
+  * + h2 {
+    @apply mt-14;
+  }
+
+  p + p {
+    @apply mt-5;
+  }
 }

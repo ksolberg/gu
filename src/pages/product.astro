@@ -1,0 +1,212 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+const items = ["Produktinformasjon", "Tekniske spesifikasjoner og sertifiseringer", "Vedlikehold", "Nedlastinger"];
+---
+
+<script>
+  import Alpine from "alpinejs";
+  import collapse from "@alpinejs/collapse";
+
+  Alpine.plugin(collapse);
+</script>
+<MainLayout>
+  <div class="flex flex-col gap-12 lg:gap-24 mt-16 lg:mt-24">
+    <section class="outer">
+      <div class="inner">
+        <h1 id="title" class="text-3xl lg:text-5xl">Redal</h1>
+
+        <div class="inner--grid mt-6 lg:mt-16">
+          <div class="col-start-1 col-span-12 lg:col-span-6">
+            <img src="sample.jpg" alt="" class="aspect-square object-cover no-visual-search mt-2 w-full max-w-[512px]" />
+
+            <a href="#" class="button button--download inline-flex items-center gap-4 mt-8">
+              <span>Lookbook</span>
+              <svg class="h-[20px] w-[13px] lg:h-[28px] lg:w-[19px] fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 30">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.5 23.2773V.75h1v22.5273l6.1635-6.3306.7165.6975L10 25.2243l-7.37999-7.5801.7165-.6975L9.5 23.2773Zm10 4.9727v1H.5v-1h19Z"></path>
+              </svg>
+            </a>
+          </div>
+          
+          <div class="col-start-1 col-span-12 lg:col-start-7 lg:col-span-6">
+            <p>I Redal har vi kombinert ting vi holder kjær; naturlig varme, kvalitet og fargeharmoni. Et sted for øynene å hvile, la hånden stryke over, lene seg tilbake og være omgitt av komfort. Redal kombinerer livlige farger med naturlige, myke grå melanger.</p>
+            <p class="text-sm mt-8">Design GU Design Team / Ragnhild<br />Nordhagen & Christiane Müller</p>
+
+            <div class="border-t border-black mt-10">
+              <ul x-data="{ expanded: '' }" class="flex flex-col">
+                {
+                  items.map(item => (
+                    <li class="border-b border-black">
+                      <button class="flex justify-between items-center py-2 w-full hover:text-gold2 transition-colors" x-on:click={`expanded = '${item}'`}>
+                        <span>{item}</span>
+                        <svg class="w-[12px] h-[22px] fill-current transform" x-bind:class={`{ 'rotate-180': expanded === '${item}' }`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 12">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M10.9854 10.2633 20.617.631657l.7071.707103L10.9854 11.6775.646588 1.33876 1.35369.631657 10.9854 10.2633Z" />
+                        </svg>
+                      </button>
+                      <div x-show={`expanded === '${item}'`} x-collapse>
+                        {item === "Produktinformasjon" && (
+                          <div class="pt-5 px-6 pb-6">
+                            <table class="table--lined table--first-bold w-full text-base">
+                              <tr>
+                                <td>Arikkelnr.</td>
+                                <td>110000</td>
+                              </tr>
+                              <tr>
+                                <td>Komposisjon</td>
+                                <td>70% ull / 30% viskose</td>
+                              </tr>
+                              <tr>
+                                <td>Vekt</td>
+                                <td>800 g/m</td>
+                              </tr>
+                              <tr>
+                                <td>Bredde</td>
+                                <td>140 cm</td>
+                              </tr>
+                            </table>
+                          </div>
+                        )}
+
+                        {item === "Tekniske spesifikasjoner og sertifiseringer" && (
+                          <div class="pt-5 px-6 pb-6">
+                            <table class="table table--lined table--first-bold w-full text-base">
+                              <tr>
+                                <td>Slitestyrke (Martindale)</td>
+                                <td>100 000</td>
+                              </tr>
+                              <tr>
+                                <td>Lysekthet (Skala 1-8)</td>
+                                <td>5 - 7</td>
+                              </tr>
+                              <tr>
+                                <td>Gniekhet tørr (Skala 1-8)</td>
+                                <td>4</td>
+                              </tr>
+                              <tr>
+                                <td>Gniekhet våt (Skala 1-5)</td>
+                                <td>3 - 4</td>
+                              </tr>
+                              <tr>
+                                <td>Rattmerke</td>
+                                <td>Ja</td>
+                              </tr>
+                              <tr>
+                                <td>EU Ecolabel</td>
+                                <td>Ja</td>
+                              </tr>
+                              <tr>
+                                <td>Flammesikring</td>
+                                <td>
+                                  EN ISO 1021: Part 1 + 2<br />
+                                  FTP Code: Part 8 (IMO)
+                                  <br />
+                                  BS 5852: Part 2 (Crib 5)
+                                </td>
+                              </tr>
+                            </table>
+                            <a href="#" class="button button--download inline-flex items-center gap-4 my-8">
+                              <span>Last ned spesifikasjoner og sertifiseringer</span>
+                              <svg class="h-[20px] w-[13px] lg:h-[28px] lg:w-[19px] fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 30">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.5 23.2773V.75h1v22.5273l6.1635-6.3306.7165.6975L10 25.2243l-7.37999-7.5801.7165-.6975L9.5 23.2773Zm10 4.9727v1H.5v-1h19Z" />
+                              </svg>
+                            </a>
+                          </div>
+                        )}
+
+                        {item === "Vedlikehold" && (
+                          <div class="pt-5 px-6 pb-6">
+                            <table class="table table--lined table--first-bold table--loose w-full text-base">
+                              <tr>
+                                <td class="w-14">
+                                  <img class="h-14 w-14" src="label.png" alt="" />
+                                </td>
+                                <td class="pl-4">Blekemidler skal ikke brukes fordi de kan forårsake fargeskjolder (bleking).</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <img class="h-14 w-14" src="label.png" alt="" />
+                                </td>
+                                <td class="pl-4">Vi anbefaler jevnlig omgang med støvsuger med glatt munnstykke for at møbelstoffer skal holde seg friske og pene over tid. Nedsmussende stoffer kan også trekke til seg flere urenheter.</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <img class="h-14 w-14" src="label.png" alt="" />
+                                </td>
+                                <td class="pl-4">Blekemidler skal ikke brukes fordi de kan forårsake fargeskjolder (bleking).</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <img class="h-14 w-14" src="label.png" alt="" />
+                                </td>
+                                <td class="pl-4">Møbbelstoffet skal ikke vaskes i maskin hvis det ikke er deklarert som maskinvaskbart.</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <img class="h-14 w-14" src="label.png" alt="" />
+                                </td>
+                                <td class="pl-4">Dampsuging - ull tåler høy temperatur, men det kan påvirke fargen.</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <img class="h-14 w-14" src="label.png" alt="" />
+                                </td>
+                                <td class="pl-4">Alkohol og etanolbaserte desinfiseringsmidler kan benyttes uten at det ødelegger ullen. Disse inneholder ofte glyserin som kan tiltrekke urenheter. Dette kan påvirke fargen og kan medføre raskere nedsmussing</td>
+                              </tr>
+                            </table>
+                            <a href="#" class="button button--download inline-flex items-center gap-4 my-8">
+                              <span>Last ned full vedlikeholdsguide</span>
+                              <svg class="h-[20px] w-[13px] lg:h-[28px] lg:w-[19px] fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 30">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.5 23.2773V.75h1v22.5273l6.1635-6.3306.7165.6975L10 25.2243l-7.37999-7.5801.7165-.6975L9.5 23.2773Zm10 4.9727v1H.5v-1h19Z" />
+                              </svg>
+                            </a>
+                          </div>
+                        )}
+
+                        {item === "Nedlastinger" && <div class="pt-5 px-6 pb-6">Nedlastinger</div>}
+                      </div>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="mt-20 border-b border-black pb-1 text-2xl">Fargepalett</h2>
+        <div class="inner--grid mt-8">
+          {
+            [...Array(12)].map(() => (
+              <a href="#title" class="col-span-4 lg:col-span-2 hover:text-gold2 transition-colors">
+                <img src="sample.jpg" alt="" class="aspect-square object-cover no-visual-search w-full" />
+                <span class="inline-flex mt-2">Fargenavn</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <div class="flex flex-col gap-12 lg:gap-24 text-xl">
+      <!-- image block -->
+      <section class="outer">
+        <div class="inner">
+          <img class="hero aspect-video object-cover object-bottom w-full no-visual-search" src="home.jpg" />
+        </div>
+      </section>
+
+      <!-- rte block -->
+      <section class="outer">
+        <div class="inner inner--grid">
+          <div class="col-start-2 col-span-10 lg:col-start-3 lg:col-span-8 rte">
+            <h2>Inspirasjon</h2>
+            <p>The changes of seasons in Gudbrandsdalen formed the bases for colours and texture in Redal. Do adipisicing cupidatat non cillum laboris aute consectetur reprehenderit id. Duis mollit commodo</p>
+            <h2>Tekniske kvaliteter</h2>
+            <p>Do adipisicing cupidatat non cillum laboris aute consectetur reprehenderit id. Duis mollit commodo elit magna nostrud excepteur labore eiusmod mollit cillum. Eiusmod excepteur tempor est ea aute ad officia et esse consectetur ut esse consectetur.</p>
+            <p>Do adipisicing cupidatat non cillum laboris aute consectetur reprehenderit id. Duis mollit commodo elit magna nostrud excepteur labore eiusmod mollit cillum. Eiusmod excepteur tempor est ea aute ad officia et esse consectetur ut esse consectetur.</p>
+            <h2>Prosess</h2>
+            <p>Do adipisicing cupidatat non cillum laboris aute consectetur reprehenderit id. Duis mollit commodo elit magna nostrud excepteur labore eiusmod mollit cillum. Eiusmod excepteur tempor est ea aute ad officia et esse consectetur ut esse consectetur. Exercitation eu in dolor reprehenderit proident est nostrud duis est. Velit esse minim cupidatat officia proident duis in labore. Est mollit proident nisi enim laboris dolore minim quis aliquip elit ipsum sint excepteur.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</MainLayout>
