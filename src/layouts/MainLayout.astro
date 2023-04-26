@@ -10,40 +10,100 @@ import "../styles.scss";
     <meta name="generator" content={Astro.generator} />
     <title>GU</title>
   </head>
-  <body x-data="{ menuVisible: true }" x-bind:class="{ 'overflow-y-hidden': menuVisible }">
-    
-    <header class="absolute w-full z-10 mt-16 lg:mt-20">      
-      <div class="outer">
+  <body x-data="{ menuVisible: false }" x-bind:class="{ 'overflow-y-hidden': menuVisible }">
+    <header class="absolute w-full z-10 mt-16 lg:mt-20">
+      <div class="outer" x-show="!menuVisible">
         <div class="inner flex gap-5 justify-between items-center">
-          <a href="#">
+          <a href="/">
             <img src="logo-white.svg" alt="logo" class="hidden lg:block" />
             <img src="logo-white-small.svg" alt="logo" class="lg:hidden" />
           </a>
           <div class="flex items-center gap-10 lg:gap-12">
             <button class="p-1 hover:text-gold2">
-              <svg class="hidden md:block" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="7.57692" cy="8" rx="6.57692" ry="7" stroke="#000" stroke-width="1.5"></ellipse><path transform="matrix(.68474 .72879 -.68474 .72879 13.4238 15)" stroke="#000" stroke-width="1.5" d="M0-.75h9.605"></path></svg>
+              <svg class="fill-current" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg"
+                ><path fill-rule="evenodd" clip-rule="evenodd" d="M7.57692 1.75C4.40216 1.75 1.75 4.50349 1.75 8c0 3.4965 2.65216 6.25 5.82692 6.25 3.17478 0 5.82688-2.7535 5.82688-6.25 0-3.49651-2.6521-6.25-5.82688-6.25ZM.25 8C.25 3.76453 3.48701.25 7.57692.25 11.6668.25 14.9038 3.76453 14.9038 8c0 4.2355-3.237 7.75-7.32688 7.75C3.48701 15.75.25 12.2355.25 8Zm19.717 13.967-6.577-7 1.0932-1.0271 6.5769 7-1.0931 1.0271Z"></path></svg
+              >
             </button>
             <div>
               <a class="underline hover:text-gold2" href="#">NO</a> /<a class="hover:text-gold2" href="#">EN</a>
             </div>
             <button class="p-1 hover:text-gold2" x-on:click="menuVisible = true">
-              <svg class="fill-current" width="27" height="18" fill="none" xmlns="http://www.w3.org/2000/svg"><path stroke="#000" stroke-width="1.75" d="M0 1.125h27M0 9.125h27M0 17.125h27"></path></svg>
+              <svg class="fill-current hidden lg:block" width="27" height="18" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 2H0V.25h27V2Zm0 8H0V8.25h27V10Zm0 8H0v-1.75h27V18Z"></path></svg>
+              <svg class="fill-current lg:hidden" width="21" height="15" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M21 2H0V.25h21V2Zm0 6.22266H0v-1.75h21v1.75Zm0 6.22264H0v-1.75h21v1.75Z"></path></svg>
             </button>
           </div>
         </div>
       </div>
 
-      <!-- x-transition:enter="transition ease-out duration-300" 
-      x-transition:enter-start="opacity-0 -translate-y-4" 
-      x-transition:enter-end="opacity-100 translate-y-0"
-       -->
-      <!-- <nav class="fixed inset-0" x-show="menuVisible" x-cloak>
-        <div class="h-full lg:p-10">
-          <div class="h-full bg-gold">
-            
+      <div class="fixed z-20 inset-0 lg:inset-10 pt-16 lg:pt-10 bg-gold" x-show="menuVisible" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" x-cloak>
+        <div class="outer">
+          <div class="inner">
+            <div class="flex gap-5 justify-between items-center">
+              <a href="/">
+                <img src="logo-black.svg" alt="logo" class="hidden lg:block" />
+                <img src="logo-black-small.svg" alt="logo" class="lg:hidden" />
+              </a>
+              <div class="flex items-center gap-10 lg:gap-12">
+                <button class="p-1 hover:text-gold2">
+                  <svg class="fill-current" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    ><path fill-rule="evenodd" clip-rule="evenodd" d="M7.57692 1.75C4.40216 1.75 1.75 4.50349 1.75 8c0 3.4965 2.65216 6.25 5.82692 6.25 3.17478 0 5.82688-2.7535 5.82688-6.25 0-3.49651-2.6521-6.25-5.82688-6.25ZM.25 8C.25 3.76453 3.48701.25 7.57692.25 11.6668.25 14.9038 3.76453 14.9038 8c0 4.2355-3.237 7.75-7.32688 7.75C3.48701 15.75.25 12.2355.25 8Zm19.717 13.967-6.577-7 1.0932-1.0271 6.5769 7-1.0931 1.0271Z"></path></svg
+                  >
+                </button>
+                <div>
+                  <a class="underline hover:text-gold2" href="#">NO</a> /<a class="hover:text-gold2" href="#">EN</a>
+                </div>
+                <button class="p-1 hover:text-gold2" x-on:click="menuVisible = false">
+                  <svg class="fill-current" width="21" height="22" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9 11.0001 0 2.00013 1.23744.762695 10.2374 9.76269 19 1.00013l1.2374 1.23744-8.7625 8.76253 8.7625 8.7626L19 21.0001l-8.7626-8.7625-8.99996 9L0 20.0001l9-9Z"></path></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="inner--grid mt-20">
+              <div class="col-span-6 lg:col-start-1 lg:col-span-3">
+                <div class="text-2xl">Kolleksjon</div>
+                <nav class="mt-4 flex flex-col items-start gap-1 lg:text-lg">
+                  <a href="#">Møbelstoffer</a>
+                  <a href="#">Bunadstoffer</a>
+                </nav>
+              </div>
+              <div class="col-start-7 col-span-6 lg:col-start-4 lg:col-span-3">
+                <div class="text-2xl">Designere</div>
+                <nav class="mt-4 flex flex-col items-start gap-1 lg:text-lg">
+                  <a href="#">Navn Navnesen</a>
+                  <a href="#">Designer Navnesen</a>
+                  <a href="#">Navn Navnesen</a>
+                  <a href="#">Designer Navnesen</a>
+                  <a href="#">Navn Navnesen</a>
+                  <a href="#">Designer Navnesen</a>
+                </nav>
+              </div>
+              <div class="col-start-1 col-span-6 lg:col-start-7 lg:col-span-3">
+                <div class="text-2xl">Om oss</div>
+                <nav class="mt-4 flex flex-col items-start gap-1 lg:text-lg">
+                  <a href="#">Historien</a>
+                  <a href="#">Produksjon</a>
+                </nav>
+              </div>
+              <div class="col-start-7 col-span-6 lg:col-start-10 lg:col-span-3">
+                <div class="text-2xl">Bærekraft</div>
+                <nav class="mt-4 flex flex-col items-start gap-1 lg:text-lg">
+                  <a href="#">Sertifiseringer</a>
+                  <a href="#">Bærekraftsrapport</a>                  
+                </nav>
+              </div>
+            </div>
+
+            <div class="mt-28">              
+              <svg class="fill-current" width="19" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.5 1.75c-3.36034 0-6.05 2.64716-6.05 5.87069 0 3.22351 2.68966 5.87071 6.05 5.87071 3.3603 0 6.05-2.6472 6.05-5.87071C15.55 4.39716 12.8603 1.75 9.5 1.75Zm3.7223 12.2841c2.2809-1.2639 3.8277-3.6548 3.8277-6.41341C17.05 3.5312 13.6507.25 9.5.25c-4.15073 0-7.55 3.2812-7.55 7.37069 0 2.75861 1.5468 5.14951 3.82765 6.41341-1.78629.5887-3.04418 1.6093-3.903 2.8267C.544071 18.7468.249979 20.9943.25 22.5173V25h1.5v-2.4828c-.00002-1.3736.27256-3.264 1.35033-4.7917 1.0449-1.4812 2.92565-2.7341 6.39967-2.7341 3.474 0 5.3548 1.2529 6.3996 2.734 1.0778 1.5278 1.3504 3.4182 1.3504 4.7918V25h1.5v-2.4828c0-1.5229-.2941-3.7704-1.6247-5.6564-.8588-1.2174-2.1167-2.238-3.903-2.8267Z" /></svg>
+              <div class="text-2xl mt-4">Velkommen til kundeportalen</div>
+              <nav class="mt-2 text-xl">
+                <a class="hover:text-gold2" href="#">Bli kunde</a> / <a class="hover:text-gold2" href="#">Logg inn</a>                  
+              </nav>
+            </div>
+
           </div>
         </div>
-      </nav> -->
+      </div>
     </header>
 
     <main>
