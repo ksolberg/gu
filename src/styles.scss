@@ -24,7 +24,7 @@ body {
 }
 
 .button {
-  @apply inline-block px-8 py-3 lg:px-12 lg:py-5 border border-black transform transition-colors;
+  @apply inline-flex items-center px-8 py-3 lg:px-12 lg:py-5 border border-black transform transition-colors;
 
   &:hover {
     @apply bg-gold;
