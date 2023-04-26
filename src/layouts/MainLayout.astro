@@ -1,5 +1,6 @@
 ---
 import "../styles.scss";
+const { whiteLogo, absHeader } = Astro.props
 ---
 
 <html lang="en">
@@ -11,12 +12,18 @@ import "../styles.scss";
     <title>GU</title>
   </head>
   <body x-data="{ menuVisible: false }" x-bind:class="{ 'overflow-y-hidden': menuVisible }">
-    <header class="absolute w-full z-10 mt-16 lg:mt-20">
+    <header class={`${absHeader && 'absolute'} w-full z-10 mt-16 lg:mt-20`}>
       <div class="outer" x-show="!menuVisible">
         <div class="inner flex gap-5 justify-between items-center">
           <a href="/">
-            <img src="logo-white.svg" alt="logo" class="hidden lg:block" />
-            <img src="logo-white-small.svg" alt="logo" class="lg:hidden" />
+            {whiteLogo && (
+              <img src="logo-white.svg" alt="logo" class="hidden lg:block" />
+              <img src="logo-white-small.svg" alt="logo" class="lg:hidden" />
+            )}
+            {!whiteLogo && (
+              <img src="logo-black.svg" alt="logo" class="hidden lg:block" />
+              <img src="logo-black-small.svg" alt="logo" class="lg:hidden" />
+            )}
           </a>
           <div class="flex items-center gap-10 lg:gap-12">
             <button class="p-1 hover:text-gold2">

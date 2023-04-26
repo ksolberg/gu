@@ -3,7 +3,7 @@
 }
 
 body {
-  @apply lg:text-xl;
+  @apply lg:text-lg;
 }
 
 .outer {
@@ -24,6 +24,25 @@ body {
 
   &:hover {
     @apply bg-gold;
+  }
+
+  &--download {
+    @apply px-4 py-3 lg:px-5 lg:py-4 font-semibold;
+  }
+}
+
+.checkbox {
+  @apply appearance-none h-4 w-4 border relative flex-shrink-0 border-[#D9D9D9];
+
+  &:checked::after {
+    content: "";
+    display: block;
+    background-image: url('/check.svg');
+    height: 14px;
+    width: 13px;
+    position: absolute;
+    left: 2px;
+    bottom: 4px;
   }
 }
 
