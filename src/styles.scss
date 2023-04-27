@@ -20,7 +20,6 @@ body {
   &--grid {
     @apply grid grid-cols-12 gap-5 lg:gap-8;
   }
-
 }
 
 .button {
@@ -41,7 +40,7 @@ body {
   &:checked::after {
     content: "";
     display: block;
-    background-image: url('/check.svg');
+    background-image: url("/check.svg");
     height: 14px;
     width: 13px;
     position: absolute;
@@ -63,12 +62,11 @@ body {
 }
 
 .table {
-  
   td {
     @apply py-[10px];
     vertical-align: top;
   }
-  
+
   &--loose td {
     @apply py-5;
   }
@@ -97,3 +95,40 @@ body {
     @apply mt-5;
   }
 }
+
+
+  .clip-corner-sm {
+    clip-path: polygon(4rem 0, 100% 0, 100% 100%, 0 100%, 0 4rem);
+
+    @screen lg {
+      clip-path: polygon(7rem 0, 100% 0, 100% 100%, 0 100%, 0 7rem);
+    }
+  }
+
+  .clip-corner-md {
+    clip-path: polygon(5rem 0, 100% 0, 100% 100%, 0 100%, 0 5rem);
+
+    @screen lg {
+      clip-path: polygon(8rem 0, 100% 0, 100% 100%, 0 100%, 0 8rem);
+    }
+  }
+
+  .clip-corner-lg {
+    clip-path: polygon(6rem 0, 100% 0, 100% 100%, 0 100%, 0 6rem);
+    @screen lg {
+      clip-path: polygon(10rem 0, 100% 0, 100% 100%, 0 100%, 0 10rem);
+    }
+  }
+
+
+  // .clip-corner-7 {
+  //   clip-path: polygon(7.5rem 0, 100% 0, 100% 100%, 0 100%, 0 7.5rem);
+  // }
+
+  // .clip-corner-8 {
+  //   clip-path: polygon(8rem 0, 100% 0, 100% 100%, 0 100%, 0 8rem);
+  // }
+
+  // .clip-corner-10 {
+  //   clip-path: polygon(10rem 0, 100% 0, 100% 100%, 0 100%, 0 10rem);
+  // }
