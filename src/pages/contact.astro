@@ -32,6 +32,8 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 <MainLayout>
   <div class="flex flex-col gap-12 lg:gap-24 mt-16 lg:mt-24">
+
+    <!-- info -->
     <section class="outer">
       <div class="inner">
         <h1 id="title" class="text-3xl lg:text-5xl">Kontakt</h1>
@@ -73,17 +75,19 @@ import MainLayout from "../layouts/MainLayout.astro";
       </div>
     </section>
 
+    <!-- map -->
     <section class="outer">
       <div class="inner">
         <div id="map" class="h-[439px]"></div>
       </div>
     </section>
 
+    <!-- employees -->
     <section class="outer">
       <div class="inner" x-data="{ hidden: true }">        
-        <h2 class="text-xl lg:text-2xl border-b pb-4 border-black flex justify-between">
+        <h2 class="text-xl lg:text-2xl border-b border-black py-4 flex justify-between relative">
           <span>Ansatte</span>
-          <button x-on:click="hidden = !hidden" class="lg:hidden">
+          <button x-on:click="hidden = !hidden" class="absolute flex items-center inset-0 justify-end h-full w-full lg:hidden">
             <svg class="fill-current h-[6px] w-[9px]" x-bind:class="{ 'transform rotate-180' : !hidden }" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.35156 3.9391 7.99787.29279l.70711.707107L4.35156 5.35331-.00185.999897.705257.29279 4.35156 3.9391Z" /></svg>
           </button>
         </h2>
@@ -105,5 +109,44 @@ import MainLayout from "../layouts/MainLayout.astro";
         </div>
       </div>
     </section>
+
+    <!-- resellers -->
+    {[...Array(3)].map(() => (
+      <section class="outer">
+        <div class="inner" x-data="{ hidden: true }">        
+          <h2 class="text-xl lg:text-2xl border-b border-black py-4 flex justify-between relative">
+            <span>Forhandlere bunadsstoff</span>
+            <button x-on:click="hidden = !hidden" class="absolute flex items-center inset-0 justify-end h-full w-full lg:hidden">
+              <svg class="fill-current h-[6px] w-[9px]" x-bind:class="{ 'transform rotate-180' : !hidden }" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.35156 3.9391 7.99787.29279l.70711.707107L4.35156 5.35331-.00185.999897.705257.29279 4.35156 3.9391Z" /></svg>
+            </button>
+          </h2>
+          <div class="hidden lg:block" x-bind:class="{ 'hidden': hidden }" x-cloak>
+            <div class="inner--grid mt-6">
+              <div class="col-span-10 lg:col-span-8">
+                <p>Takk for at du ønsker å benytte våre produkter. Private kunder kan henvende seg til en av våre forhandlere for informasjon, kjøp og pristilbud. Dersom du skal trekke om hos møbeltapetserer, er det også mulig å bestille stoff direkte hos den du velger til oppdraget</p>
+              </div>
+            </div>
+            <div class="inner--grid mt-16 lg:mt-10 gap-y-10 lg:gap-y-24">
+              {
+                [...Array(3)].map(() => (
+                  <div class="col-span-12 md:col-span-6 lg:col-span-4">                                  
+                    <h3 class="mt-5 lg:mt-10 text-xl border-b border-black pb-2 mb-5">Stedsnavn</h3>
+                    Butikknavn<br/>
+                    T: <a href="#">+47 92 60 80 90</a><br/>
+                    M: <a href="#">+47 96 52 65 88</a><br/>
+                    E: <a href="#">hei@butikknanvn.no</a><br/>
+                    <a href="#">Besøk webside</a>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </section>
+    ))}
+    
+
+
+
   </div>
 </MainLayout>
