@@ -1,0 +1,32 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout>
+  <div class="flex flex-col gap-12 lg:gap-24 mt-16 lg:mt-24">
+    <section class="outer">
+      <div class="inner">
+        <h1 id="title" class="text-3xl lg:text-5xl">404</h1>
+      </div>
+    </section>
+
+    <!-- headline block (smaller text and left aligned and button) -->
+    <section class="outer">
+      <div class="inner inner--grid">
+        <div class="col-start-2 col-end-12 lg:col-start-3 lg:col-end-11">
+          <h2 class="text-xl lg:text-2xl lg:py-8">Beklager, vi kan ikke finne siden du leter etter. Du kan prøve å gå tilbake eller ta kontakt med oss for å høre om vi kan hjelpe deg.</h2>
+          <div class="mt-10 lg:mt-0">
+            <a href="#" class="button">Ta kontakt</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- narrow image -->
+    <section class="outer">
+      <div class="inner">
+        <img class="hero clip-corner-lg aspect-video object-cover object-bottom w-full no-visual-search" src="/home.jpg" />
+      </div>
+    </section>
+  </div>
+</MainLayout>
