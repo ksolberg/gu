@@ -1,0 +1,150 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import "swiper/css";
+import "swiper/css/navigation";
+---
+
+<script>
+  import Swiper, { Navigation } from "swiper";
+
+  new Swiper(".swiper-1", {
+    breakpoints: {
+      320: {
+        slidesOffsetBefore: 20,
+        slidesOffsetAfter: 20,
+        slidesPerView: 1.7,
+        spaceBetween: 20,
+      },
+      1024: {
+        slidesOffsetBefore: 0,
+        slidesOffsetAfter: 0,
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+    },
+  });
+
+</script>
+<MainLayout>
+  <div class="flex flex-col gap-12 lg:gap-24 mt-16 lg:mt-24">
+    <section class="outer">
+      <div class="inner">
+        <h1 id="title" class="text-3xl lg:text-5xl">Om oss</h1>
+      </div>
+    </section>
+
+    <!-- headline block (smaller text and left aligned) -->
+    <section class="outer">
+      <div class="inner inner--grid">
+        <div class="col-start-2 col-end-12 lg:col-start-3 lg:col-end-11">
+          <h2 class="text-xl lg:text-2xl lg:py-8">Irure enim ea aute ea quis id anim incididunt. In qui qui incididunt nostrud. Ullamco ea sunt nisi exercitation irure aute eu nisi. Excepteur excepteur nostrud excepteur mollit labore proident culpa nisi aute cupidatat eu est. Ullamco velit mollit.</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- image with text box overlay block -->
+    <section class="outer relative lg:pb-20">
+      <div class="inner inner--grid">
+        <div class="col-start-1 col-end-12 lg:col-end-11 bg-red-100">
+          <img class="w-full no-visual-search" src="/fabric-orange.jpg" alt="" />
+        </div>
+      </div>
+      <div class="lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:px-8 -mt-12 lg:mt-0 -mr-5 lg:mr-0">
+        <div class="inner inner--grid left-0">
+          <div class="col-start-4 lg:col-start-8 col-end-13 p-6 lg:p-12 bg-gold">
+            <p>Gudbrandsdalens Uldvarefabrik har alle prosesser under samme tak. Design, utvikling og produksjon tett på hverandre gir fordeler som hever kvaliteten.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- rte block -->
+    <section class="outer">
+      <div class="inner inner--grid">
+        <div class="col-start-2 col-span-10 lg:col-start-3 lg:col-span-8 rte">
+          <h2>Tittel</h2>
+          <p>The changes of seasons in Gudbrandsdalen formed the bases for colours and texture in Redal. Do adipisicing cupidatat non cillum laboris aute consectetur reprehenderit id. Duis mollit commodo</p>
+          <p>Do adipisicing cupidatat non cillum laboris aute consectetur reprehenderit id. Duis mollit commodo elit magna nostrud excepteur labore eiusmod mollit cillum. Eiusmod excepteur tempor est ea aute ad officia et esse consectetur ut esse consectetur. Do adipisicing cupidatat non cillum laboris aute consectetur reprehenderit id. Duis mollit commodo elit magna nostrud excepteur labore eiusmod mollit cillum. Eiusmod excepteur tempor est ea aute ad officia et esse consectetur ut esse consectetur.</p>
+          <p>Do adipisicing cupidatat non cillum laboris aute consectetur reprehenderit id. Duis mollit commodo elit magna nostrud excepteur labore eiusmod mollit cillum. Eiusmod excepteur tempor est ea aute ad officia et esse consectetur ut esse consectetur.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- narrow image -->
+    <section class="outer">
+      <div class="inner">
+        <img class="hero clip-corner-lg aspect-video object-cover object-bottom w-full no-visual-search" src="/home.jpg" />
+      </div>
+    </section>
+
+    <!-- timeline block -->
+    <section class="outer">
+      <div class="inner inner--grid">
+        <div class="col-start-2 col-span-11 lg:col-start-3 lg:col-span-8 rte">
+          <h2>Priser og utmerkelser</h2>
+          <p class="text-lg">Do adipisicing cupidatat non cillum laboris aute consectetur reprehenderit id. Duis mollit commodo elit magna nostrud excepteur labore eiusmod mollit cillum. Eiusmod excepteur tempor est ea aute ad officia et esse consectetur ut esse consectetur.</p>
+        </div>
+        <div class="col-start-2 col-span-11 lg:col-start-3 lg:col-span-4 text-base">
+          <ul class="flex flex-col gap-4">
+            {
+              [...Array(10)].map(() => (
+                <li>
+                  <div class="flex">
+                    <span class="w-28">2003</span>
+                    <span>Odal 2 merker - Merket for God Design og Hedersmerket</span>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="col-start-2 col-span-11 lg:col-start-7 lg:col-span-4 text-base">
+          <ul class="flex flex-col gap-4">
+            {
+              [...Array(10)].map(() => (
+                <li>
+                  <div class="flex">
+                    <span class="w-28">2003</span>
+                    <span>Odal 2 merker - Merket for God Design og Hedersmerket</span>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- swiper 1 block -->
+    <section class="outer">
+      <div class="inner -mx-5 lg:mx-auto">
+        <div class="swiper swiper-1">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="#">
+                <img src="/square-1.jpg" class="clip-corner-md aspect-square object-cover object-center w-full no-visual-search" alt="" />
+                <p class="pt-6 lg:pt-14">In pariatur anim pariatur reprehenderit exercitation Lorem quis elit excepteur.</p>
+              </a>
+              <a class="link pt-3 lg:pt-8" href="#">Les mer</a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#">
+                <img src="/square-2.jpg" class="clip-corner-md aspect-square object-cover object-center w-full no-visual-search" alt="" />
+                <p class="pt-6 lg:pt-14">In pariatur anim pariatur reprehenderit exercitation Lorem quis elit excepteur.</p>
+              </a>
+              <a class="link pt-3 lg:pt-8" href="#">Les mer</a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#">
+                <img src="/square-3.jpg" class="clip-corner-md aspect-square object-cover object-center w-full no-visual-search" alt="" />
+                <p class="pt-6 lg:pt-14">In pariatur anim pariatur reprehenderit exercitation Lorem quis elit excepteur.</p>
+              </a>
+              <a class="link pt-3 lg:pt-8" href="#">Les mer</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</MainLayout>
