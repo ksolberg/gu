@@ -1,0 +1,109 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<script>
+  import "mapbox-gl/dist/mapbox-gl.css";
+  import mapboxgl from "mapbox-gl";
+
+  mapboxgl.accessToken = "pk.eyJ1Ijoia2VubmV0aC1zb2xiZXJnIiwiYSI6ImNsaDBqMGJiNDB0d3oza3J6bG4yZmwzcjYifQ.RzqmGDR2b7nJ33brpyAt-Q";
+
+  const map = new mapboxgl.Map({
+    container: "map",
+    style: "mapbox://styles/mapbox/light-v10",
+    center: [10.459840198456542, 61.11681922169808], // starting position [lng, lat]
+    zoom: 12,
+  });
+
+  const marker = new mapboxgl.Marker({ color: "black" }).setLngLat([10.459840198456542, 61.11681922169808]).addTo(map);
+
+  map.scrollZoom.disable();
+  map.doubleClickZoom.disable();
+  map.touchZoomRotate.disable();
+  map.boxZoom.disable();
+  map.dragRotate.disable();
+  map.keyboard.disable();
+
+  const nav = new mapboxgl.NavigationControl({
+    showCompass: false,
+  });
+  map.addControl(nav, "bottom-right");
+</script>
+
+<MainLayout>
+  <div class="flex flex-col gap-12 lg:gap-24 mt-16 lg:mt-24">
+    <section class="outer">
+      <div class="inner">
+        <h1 id="title" class="text-3xl lg:text-5xl">Kontakt</h1>
+
+        <div class="inner--grid mt-10 lg:mt-16">
+          <div class="col-span-9 lg:col-span-4">
+            <h2 class="text-xl lg:text-2xl">Lurer du på noe? Send oss en e-post eller ring oss:</h2>
+            <div class="flex flex-col gap-5 mt-8 lg:mt-10">
+              <a href="#" class="button font-semibold justify-center">Tlf: +47 61 22 15 00</a>
+              <a href="#" class="button font-semibold justify-center">Email: gu@gu.no</a>
+            </div>
+            <p class="mt-8 lg:mt-20 bg-gold p-12">Er du privatperson og ønsker å kjøpe tekstiler fra oss? Ta kontakt med din nærmeste forhandler eller møbel-tapetserer i oversikten under.</p>
+          </div>
+
+          <div class="col-span-12 lg:col-start-7 lg:col-span-6 mt-12 lg:mt-0">
+            <div class="flex flex-col gap-12 lg:gap-24">
+              <section>
+                <h2 class="text-2xl border-b pb-4 border-black">Åpningstider</h2>
+                <div class="rte mt-10">
+                  <p>Mandag - Fredag<br /> kl. 09 - 15</p>
+                  <p>Vi holder stengt i juleferien, påskeferien og sommerferien uke 28 - 29 - 30 -31.</p>
+                </div>
+              </section>
+              <section>
+                <h2 class="text-2xl border-b pb-4 border-black">Postadresse</h2>
+                <div class="rte mt-10">
+                  <p>Postboks 836<br />NO-2626 Lillehammer</p>
+                </div>
+              </section>
+              <section>
+                <h2 class="text-2xl border-b pb-4 border-black">Besøksadresse</h2>
+                <div class="rte mt-10">
+                  <p>Morterudveien 3/5<br />NO-2609 Lillehammer</p>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="outer">
+      <div class="inner">
+        <div id="map" class="h-[439px]"></div>
+      </div>
+    </section>
+
+    <section class="outer">
+      <div class="inner" x-data="{ hidden: true }">        
+        <h2 class="text-xl lg:text-2xl border-b pb-4 border-black flex justify-between">
+          <span>Ansatte</span>
+          <button x-on:click="hidden = !hidden" class="lg:hidden">
+            <svg class="fill-current h-[6px] w-[9px]" x-bind:class="{ 'transform rotate-180' : !hidden }" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.35156 3.9391 7.99787.29279l.70711.707107L4.35156 5.35331-.00185.999897.705257.29279 4.35156 3.9391Z" /></svg>
+          </button>
+        </h2>
+        <div class="hidden lg:block" x-bind:class="{ 'hidden': hidden }" x-cloak>
+          <div class="inner--grid mt-6 lg:mt-10 gap-y-10 lg:gap-y-24">
+            {
+              [...Array(9)].map(() => (
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">                
+                  <img src="/person.jpg" class="h-64 w-64 lg:h-60 lg:w-60 aspect-square object-cover no-visual-search" alt="" />
+                  <h3 class="mt-5 lg:mt-10 text-xl border-b border-black pb-2 mb-5">Jann Skrefsrud</h3>
+                  Adm. Direktør<br/>
+                  T: <a href="#">+47 92 60 80 90</a><br/>
+                  M: <a href="#">+47 96 52 65 88</a><br/>
+                  E: <a href="#">jan.skrefsrud@gu.no</a>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</MainLayout>
