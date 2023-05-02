@@ -1,29 +1,44 @@
 ---
 import "../styles.scss";
-const { whiteLogo, absHeader } = Astro.props
+const { whiteLogo, absHeader } = Astro.props;
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>GU</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" />
   </head>
   <body x-data="{ menuVisible: false }" x-bind:class="{ 'overflow-y-hidden': menuVisible }">
-    <header class={`${absHeader && 'absolute'} w-full z-10 mt-16 lg:mt-20`}>
+    <header class={`${absHeader && "absolute"} w-full z-10 mt-16 lg:mt-20`}>
       <div class="outer" x-show="!menuVisible">
         <div class="inner flex gap-5 justify-between items-center">
           <a href="/">
-            {whiteLogo && (
-              <img src="/logo-white.svg" alt="logo" class="hidden lg:block" />
-              <img src="/logo-white-small.svg" alt="logo" class="lg:hidden" />
-            )}
-            {!whiteLogo && (
-              <img src="/logo-black.svg" alt="logo" class="hidden lg:block" />
-              <img src="/logo-black-small.svg" alt="logo" class="lg:hidden" />
-            )}
+            {
+              whiteLogo && (
+                <>
+                  <img src="/logo-white.svg" alt="logo" class="hidden lg:block" />
+                  <img src="/logo-white-small.svg" alt="logo" class="lg:hidden" />
+                </>
+              )
+            }
+            {
+              !whiteLogo && (
+                <>
+                  <img src="/logo-black.svg" alt="logo" class="hidden lg:block" />
+                  <img src="/logo-black-small.svg" alt="logo" class="lg:hidden" />
+                </>
+              )
+            }
           </a>
           <div class="flex items-center gap-10 lg:gap-12">
             <button class="p-1 hover:text-gold2">
@@ -95,19 +110,24 @@ const { whiteLogo, absHeader } = Astro.props
                 <div class="text-2xl">Bærekraft</div>
                 <nav class="mt-4 flex flex-col items-start gap-1 lg:text-lg">
                   <a href="#">Sertifiseringer</a>
-                  <a href="#">Bærekraftsrapport</a>                  
+                  <a href="#">Bærekraftsrapport</a>
                 </nav>
               </div>
             </div>
 
-            <div class="mt-28">              
-              <svg class="fill-current" width="19" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.5 1.75c-3.36034 0-6.05 2.64716-6.05 5.87069 0 3.22351 2.68966 5.87071 6.05 5.87071 3.3603 0 6.05-2.6472 6.05-5.87071C15.55 4.39716 12.8603 1.75 9.5 1.75Zm3.7223 12.2841c2.2809-1.2639 3.8277-3.6548 3.8277-6.41341C17.05 3.5312 13.6507.25 9.5.25c-4.15073 0-7.55 3.2812-7.55 7.37069 0 2.75861 1.5468 5.14951 3.82765 6.41341-1.78629.5887-3.04418 1.6093-3.903 2.8267C.544071 18.7468.249979 20.9943.25 22.5173V25h1.5v-2.4828c-.00002-1.3736.27256-3.264 1.35033-4.7917 1.0449-1.4812 2.92565-2.7341 6.39967-2.7341 3.474 0 5.3548 1.2529 6.3996 2.734 1.0778 1.5278 1.3504 3.4182 1.3504 4.7918V25h1.5v-2.4828c0-1.5229-.2941-3.7704-1.6247-5.6564-.8588-1.2174-2.1167-2.238-3.903-2.8267Z" /></svg>
+            <div class="mt-28">
+              <svg class="fill-current" width="19" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"
+                ><path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M9.5 1.75c-3.36034 0-6.05 2.64716-6.05 5.87069 0 3.22351 2.68966 5.87071 6.05 5.87071 3.3603 0 6.05-2.6472 6.05-5.87071C15.55 4.39716 12.8603 1.75 9.5 1.75Zm3.7223 12.2841c2.2809-1.2639 3.8277-3.6548 3.8277-6.41341C17.05 3.5312 13.6507.25 9.5.25c-4.15073 0-7.55 3.2812-7.55 7.37069 0 2.75861 1.5468 5.14951 3.82765 6.41341-1.78629.5887-3.04418 1.6093-3.903 2.8267C.544071 18.7468.249979 20.9943.25 22.5173V25h1.5v-2.4828c-.00002-1.3736.27256-3.264 1.35033-4.7917 1.0449-1.4812 2.92565-2.7341 6.39967-2.7341 3.474 0 5.3548 1.2529 6.3996 2.734 1.0778 1.5278 1.3504 3.4182 1.3504 4.7918V25h1.5v-2.4828c0-1.5229-.2941-3.7704-1.6247-5.6564-.8588-1.2174-2.1167-2.238-3.903-2.8267Z"
+                ></path></svg
+              >
               <div class="text-2xl mt-4">Velkommen til kundeportalen</div>
               <nav class="mt-2 text-xl">
-                <a class="hover:text-gold2" href="#">Bli kunde</a> / <a class="hover:text-gold2" href="#">Logg inn</a>                  
+                <a class="hover:text-gold2" href="#">Bli kunde</a> / <a class="hover:text-gold2" href="#">Logg inn</a>
               </nav>
             </div>
-
           </div>
         </div>
       </div>
