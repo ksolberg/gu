@@ -1,0 +1,185 @@
+---
+const colors = [
+  { bg: "bg-[#C2BDBD]", name: "Hvit/Grå" },
+  { bg: "bg-[#000000]", name: "Svart/Mørk" },
+  { bg: "bg-[#F35148]", name: "Rød" },
+  { bg: "bg-[#FC7C4C]", name: "Oransje" },
+  { bg: "bg-[#FED261]", name: "Gul" },
+  { bg: "bg-[#856464]", name: "Brun/Beige" },
+  { bg: "bg-[#74B771]", name: "Grønn" },
+  { bg: "bg-[#60B5FB]", name: "Blå" },
+  { bg: "bg-[#EB9DED]", name: "Rosa" },
+  { bg: "bg-[#A67AC0]", name: "Lilla" },
+  { bg: "bg-[#7AC0B4]", name: "Turkis" },
+];
+const products = ["Amdal", "Bardal", "Gandal", "Hallingdal 65", "Heddal Stitches", "Heidal", "Hemsedal", "Koksdal", "Lodal", "Modal"];
+const envs = ["EU Blomst"];
+const flames = ["Rattmerke", "Crib 5"];
+---
+
+<script>
+  import "nouislider/dist/nouislider.css";
+  import noUiSlider from "nouislider";
+  var range = document.getElementById("range-martindale");
+  if (range) {
+    const slider = noUiSlider.create(range, {
+      start: [50000, 200000],
+      step: 1000,
+      connect: true,
+      range: {
+        min: 50000,
+        max: 200000,
+      },
+    });
+    slider.on("slide", function (values) {
+      const lower = document.getElementById("range-martindale-lower");
+      if (lower) lower.innerHTML = `${Math.floor(values[0] as number)}`;
+      const upper = document.getElementById("range-martindale-upper");
+      if (upper) upper.innerHTML = `${Math.floor(values[1] as number)}`;
+    });
+  }
+</script>
+
+<style lang="scss" is:global>
+  .range {
+    height: 4px !important;
+    box-shadow: none !important;
+    padding: 0 8px !important;
+
+    .noUi-connect {
+      background: black;
+    }
+
+    .noUi-handle {
+      box-shadow: none !important;
+      height: 18px !important;
+      width: 18px !important;
+      top: -8px !important;
+      right: -9px !important; /* half the width */
+      border-radius: 9px !important;
+
+      &::before,
+      &::after {
+        display: none;
+      }
+
+      .noUi-touch-area {
+        border: 1px solid transparent;
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        width: auto;
+        height: auto;
+      }
+    }
+  }
+</style>
+
+<section class="outer">
+  <div class="inner inner--grid">
+    <div class="col-start-1 col-span-6 md:col-span-4 lg:col-span-3">
+      <div x-data="{ filtersVisible: false }">
+        <button class="lg:hidden border-b border-black pb-2 flex items-center justify-between w-full transition-colors hover:text-gold2 hover:border-gold2 mb-10" x-on:click="filtersVisible = !filtersVisible">
+          <span>Filter</span>
+          <svg class="fill-current transform" x-bind:class="{ 'rotate-180': filtersVisible }" width="10" height="6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.9999 4.29255 1.35359.64624l-.707106.70711L4.9999 5.70676l4.35341-4.35341L8.6462.64624 4.9999 4.29255Z"></path></svg>
+        </button>
+
+        <div class="flex flex-col gap-16 pb-8 lg:flex" x-bind:class="{ 'hidden': !filtersVisible }" x-cloak>
+          <div>
+            <div class="border-b border-black pb-2">Velg fargetone</div>
+            <ul class="mt-8 flex flex-col gap-2">
+              {
+                colors.map(color => (
+                  <li>
+                    <label class="flex gap-2 items-center">
+                      <input class="checkbox peer" type="checkbox" />
+                      <div class={`h-4 w-4 flex-shrink-0 ${color.bg}`} />
+                      <span class="peer-checked:font-semibold font-light">{color.name}</span>
+                    </label>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <div>
+            <div class="border-b border-black pb-2">Velg produkt</div>
+            <ul class="mt-8 flex flex-col gap-2">
+              {
+                products.map(product => (
+                  <li>
+                    <label class="flex gap-2 items-center">
+                      <input class="checkbox peer" type="checkbox" />
+                      <span class="peer-checked:font-semibold font-light">{product}</span>
+                    </label>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <div>
+            <div class="border-b border-black pb-2">Martindale (slitestyrke)</div>
+            <div class="mt-8">
+              <div class="range" id="range-martindale"></div>
+              <div class="flex justify-between mt-4 text-sm">
+                <span id="range-martindale-lower">50000</span>
+                <span id="range-martindale-upper">200000</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="border-b border-black pb-2">Miljømerking</div>
+            <ul class="mt-8 flex flex-col gap-2">
+              {
+                envs.map(env => (
+                  <li>
+                    <label class="flex gap-2 items-center">
+                      <input class="checkbox peer" type="checkbox" />
+                      <span class="peer-checked:font-semibold font-light">{env}</span>
+                    </label>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <div>
+            <div class="border-b border-black pb-2">Flammesikring</div>
+            <ul class="mt-8 flex flex-col gap-2">
+              {
+                flames.map(flame => (
+                  <li>
+                    <label class="flex gap-2 items-center">
+                      <input class="checkbox peer" type="checkbox" />
+                      <span class="peer-checked:font-semibold font-light">{flame}</span>
+                    </label>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- products -->
+    <div class="col-start-1 col-span-12 lg:col-start-4 lg:col-span-9">
+      <div class="flex flex-wrap -mx-1 lg:-mx-4">
+        {
+          [...Array(20)].map(() => (
+            <div class="w-1/3 px-1 lg:px-4 pb-4 mb-6">
+              <a href="/product" class="hover:text-gold2 transition-colors">
+                <h2 class="lg:text-xl font-semibold">Stoffnavn</h2>
+                <img src="/fabric2.jpg" alt="" class="aspect-square object-cover no-visual-search mt-2 w-full" />
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
