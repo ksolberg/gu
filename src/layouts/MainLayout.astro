@@ -3,13 +3,12 @@ import "../styles.scss";
 const { whiteLogo, absHeader } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="no">
   <head>
     <meta charset="utf-8" />
 
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>GU</title>
+    <meta name="viewport" content="width=device-width" />    
+    <title>Gudbrandsdalens Uldvarefabrik</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -17,6 +16,15 @@ const { whiteLogo, absHeader } = Astro.props;
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="GU" />
+    <meta property="og:site_name" content="Gudbrandsdalens Uldvarefabrik">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Gudbrandsdalens Uldvarefabrik">
+    <meta property="og:description" content="Gudbrandsdalens Uldvarefabrik ble etablert i Lillehammer i 1887 og er i dag en av Europas ledende leverandører av møbel- og bunadstoffer.">
+    <meta property="og:image" content="/og.jpg">
+    <meta property="og:image:width" content="428">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://www.gu.no/">
     <link href="https://use.typekit.net/nof6xfi.css" rel="stylesheet" />
   </head>
   <body x-data="{ menuVisible: false }" x-bind:class="{ 'overflow-y-hidden': menuVisible }">
