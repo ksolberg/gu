@@ -1,4 +1,6 @@
 ---
+import SearchInput from "../components/SearchInput.astro";
+import SearchForm from "../components/SearchForm.astro";
 import "../styles.scss";
 const { whiteLogo, absHeader } = Astro.props;
 ---
@@ -6,8 +8,7 @@ const { whiteLogo, absHeader } = Astro.props;
 <html lang="no">
   <head>
     <meta charset="utf-8" />
-
-    <meta name="viewport" content="width=device-width" />    
+    <meta name="viewport" content="width=device-width" />
     <title>Gudbrandsdalens Uldvarefabrik</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -16,18 +17,18 @@ const { whiteLogo, absHeader } = Astro.props;
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="theme-color" content="#ffffff" />
-    <meta name="description" content="GU" />
-    <meta property="og:site_name" content="Gudbrandsdalens Uldvarefabrik">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Gudbrandsdalens Uldvarefabrik">
-    <meta property="og:description" content="Gudbrandsdalens Uldvarefabrik ble etablert i Lillehammer i 1887 og er i dag en av Europas ledende leverandører av møbel- og bunadstoffer.">
-    <meta property="og:image" content="/og.jpg">
-    <meta property="og:image:width" content="428">
-    <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://www.gu.no/">
+    <meta name="description" content="Gudbrandsdalens Uldvarefabrik ble etablert i Lillehammer i 1887 og er i dag en av Europas ledende leverandører av møbel- og bunadstoffer." />
+    <meta property="og:site_name" content="Gudbrandsdalens Uldvarefabrik" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Gudbrandsdalens Uldvarefabrik" />
+    <meta property="og:description" content="Gudbrandsdalens Uldvarefabrik ble etablert i Lillehammer i 1887 og er i dag en av Europas ledende leverandører av møbel- og bunadstoffer." />
+    <meta property="og:image" content="/og.jpg" />
+    <meta property="og:image:width" content="428" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://www.gu.no/" />
     <link href="https://use.typekit.net/nof6xfi.css" rel="stylesheet" />
   </head>
-  <body x-data="{ menuVisible: false }" x-bind:class="{ 'overflow-y-hidden': menuVisible }">
+  <body x-data="{ menuVisible: false, searchVisible: false }" x-bind:class="{ 'overflow-y-hidden': menuVisible }">
     <header class={`${absHeader && "absolute"} w-full z-10 mt-16 lg:mt-20`}>
       <div class="outer" x-show="!menuVisible">
         <div class="inner flex gap-5 justify-between items-center">
@@ -50,11 +51,10 @@ const { whiteLogo, absHeader } = Astro.props;
             }
           </a>
           <div class="flex items-center gap-10 lg:gap-12">
-            <a href="/search" class="p-1 hover:text-gold2">
-              <svg class="fill-current" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg"
-                ><path fill-rule="evenodd" clip-rule="evenodd" d="M7.57692 1.75C4.40216 1.75 1.75 4.50349 1.75 8c0 3.4965 2.65216 6.25 5.82692 6.25 3.17478 0 5.82688-2.7535 5.82688-6.25 0-3.49651-2.6521-6.25-5.82688-6.25ZM.25 8C.25 3.76453 3.48701.25 7.57692.25 11.6668.25 14.9038 3.76453 14.9038 8c0 4.2355-3.237 7.75-7.32688 7.75C3.48701 15.75.25 12.2355.25 8Zm19.717 13.967-6.577-7 1.0932-1.0271 6.5769 7-1.0931 1.0271Z"></path></svg
-              >
-            </a>
+            <div class="items-center hidden md:flex">
+              <SearchInput />
+            </div>
+
             <div>
               <a class="underline hover:text-gold2" href="#">NO</a> /<a class="hover:text-gold2" href="#">EN</a>
             </div>
@@ -75,11 +75,7 @@ const { whiteLogo, absHeader } = Astro.props;
                 <img src="/logo-black-small.svg" alt="logo" class="lg:hidden" />
               </a>
               <div class="flex items-center gap-10 lg:gap-12">
-                <button class="p-1 hover:text-gold2">
-                  <svg class="fill-current" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    ><path fill-rule="evenodd" clip-rule="evenodd" d="M7.57692 1.75C4.40216 1.75 1.75 4.50349 1.75 8c0 3.4965 2.65216 6.25 5.82692 6.25 3.17478 0 5.82688-2.7535 5.82688-6.25 0-3.49651-2.6521-6.25-5.82688-6.25ZM.25 8C.25 3.76453 3.48701.25 7.57692.25 11.6668.25 14.9038 3.76453 14.9038 8c0 4.2355-3.237 7.75-7.32688 7.75C3.48701 15.75.25 12.2355.25 8Zm19.717 13.967-6.577-7 1.0932-1.0271 6.5769 7-1.0931 1.0271Z"></path></svg
-                  >
-                </button>
+                <SearchInput />
                 <div>
                   <a class="underline hover:text-gold2" href="#">NO</a> /<a class="hover:text-gold2" href="#">EN</a>
                 </div>
@@ -89,49 +85,54 @@ const { whiteLogo, absHeader } = Astro.props;
               </div>
             </div>
 
-            <div class="inner--grid mt-20">
-              <div class="col-span-6 lg:col-start-1 lg:col-span-3">
-                <div class="text-2xl">Kolleksjon</div>
-                <nav class="mt-4 flex flex-col items-start gap-1 lg:text-lg">
-                  <a href="#">Møbelstoffer</a>
-                  <a href="#">Bunadstoffer</a>
-                </nav>
-              </div>
-              <div class="col-start-7 col-span-6 lg:col-start-4 lg:col-span-3">
-                <div class="text-2xl">Designere</div>
-                <nav class="mt-4 flex flex-col items-start gap-1 lg:text-lg">
-                  <a href="#">Navn Navnesen</a>
-                  <a href="#">Designer Navnesen</a>
-                  <a href="#">Navn Navnesen</a>
-                  <a href="#">Designer Navnesen</a>
-                  <a href="#">Navn Navnesen</a>
-                  <a href="#">Designer Navnesen</a>
-                </nav>
-              </div>
-              <div class="col-start-1 col-span-6 lg:col-start-7 lg:col-span-3">
-                <div class="text-2xl">Om oss</div>
-                <nav class="mt-4 flex flex-col items-start gap-1 lg:text-lg">
-                  <a href="#">Historien</a>
-                  <a href="#">Produksjon</a>
-                </nav>
-              </div>
-              <div class="col-start-7 col-span-6 lg:col-start-10 lg:col-span-3">
-                <div class="text-2xl">Bærekraft</div>
-                <nav class="mt-4 flex flex-col items-start gap-1 lg:text-lg">
-                  <a href="#">Sertifiseringer</a>
-                  <a href="#">Bærekraftsrapport</a>
-                </nav>
-              </div>
+            <div class="mt-8 block md:hidden" x-show="searchVisible">
+              <SearchForm />
             </div>
 
-            <div class="mt-28">
-              <svg class="fill-current" width="19" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"
-                ><path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M9.5 1.75c-3.36034 0-6.05 2.64716-6.05 5.87069 0 3.22351 2.68966 5.87071 6.05 5.87071 3.3603 0 6.05-2.6472 6.05-5.87071C15.55 4.39716 12.8603 1.75 9.5 1.75Zm3.7223 12.2841c2.2809-1.2639 3.8277-3.6548 3.8277-6.41341C17.05 3.5312 13.6507.25 9.5.25c-4.15073 0-7.55 3.2812-7.55 7.37069 0 2.75861 1.5468 5.14951 3.82765 6.41341-1.78629.5887-3.04418 1.6093-3.903 2.8267C.544071 18.7468.249979 20.9943.25 22.5173V25h1.5v-2.4828c-.00002-1.3736.27256-3.264 1.35033-4.7917 1.0449-1.4812 2.92565-2.7341 6.39967-2.7341 3.474 0 5.3548 1.2529 6.3996 2.734 1.0778 1.5278 1.3504 3.4182 1.3504 4.7918V25h1.5v-2.4828c0-1.5229-.2941-3.7704-1.6247-5.6564-.8588-1.2174-2.1167-2.238-3.903-2.8267Z"
-                ></path></svg
-              >
+            <div class="md:block" x-show="!searchVisible">
+              <nav aria-label="Hovedmeny" class="inner--grid mt-20">
+                <div class="col-span-6 lg:col-start-1 lg:col-span-3">
+                  <div class="text-2xl">Kolleksjon</div>
+                  <div class="mt-4 flex flex-col items-start gap-1 lg:text-lg">
+                    <a href="#">Møbelstoffer</a>
+                    <a href="#">Bunadstoffer</a>
+                  </div>
+                </div>
+                <div class="col-start-7 col-span-6 lg:col-start-4 lg:col-span-3">
+                  <div class="text-2xl">Designere</div>
+                  <div class="mt-4 flex flex-col items-start gap-1 lg:text-lg">
+                    <a href="#">Navn Navnesen</a>
+                    <a href="#">Designer Navnesen</a>
+                    <a href="#">Navn Navnesen</a>
+                    <a href="#">Designer Navnesen</a>
+                    <a href="#">Navn Navnesen</a>
+                    <a href="#">Designer Navnesen</a>
+                  </div>
+                </div>
+                <div class="col-start-1 col-span-6 lg:col-start-7 lg:col-span-3">
+                  <div class="text-2xl">Om oss</div>
+                  <div class="mt-4 flex flex-col items-start gap-1 lg:text-lg">
+                    <a href="#">Historien</a>
+                    <a href="#">Produksjon</a>
+                  </div>
+                </div>
+                <div class="col-start-7 col-span-6 lg:col-start-10 lg:col-span-3">
+                  <div class="text-2xl">Bærekraft</div>
+                  <div class="mt-4 flex flex-col items-start gap-1 lg:text-lg">
+                    <a href="#">Sertifiseringer</a>
+                    <a href="#">Bærekraftsrapport</a>
+                  </div>
+                </div>
+              </nav>
+
+              <div class="mt-28">
+                <svg class="fill-current" width="19" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M9.5 1.75c-3.36034 0-6.05 2.64716-6.05 5.87069 0 3.22351 2.68966 5.87071 6.05 5.87071 3.3603 0 6.05-2.6472 6.05-5.87071C15.55 4.39716 12.8603 1.75 9.5 1.75Zm3.7223 12.2841c2.2809-1.2639 3.8277-3.6548 3.8277-6.41341C17.05 3.5312 13.6507.25 9.5.25c-4.15073 0-7.55 3.2812-7.55 7.37069 0 2.75861 1.5468 5.14951 3.82765 6.41341-1.78629.5887-3.04418 1.6093-3.903 2.8267C.544071 18.7468.249979 20.9943.25 22.5173V25h1.5v-2.4828c-.00002-1.3736.27256-3.264 1.35033-4.7917 1.0449-1.4812 2.92565-2.7341 6.39967-2.7341 3.474 0 5.3548 1.2529 6.3996 2.734 1.0778 1.5278 1.3504 3.4182 1.3504 4.7918V25h1.5v-2.4828c0-1.5229-.2941-3.7704-1.6247-5.6564-.8588-1.2174-2.1167-2.238-3.903-2.8267Z"></path>
+                </svg>
+              </div>
               <div class="text-2xl mt-4">Velkommen til kundeportalen</div>
               <nav class="mt-2 text-xl">
                 <a class="hover:text-gold2" href="#">Bli kunde</a> / <a class="hover:text-gold2" href="#">Logg inn</a>
@@ -141,45 +142,45 @@ const { whiteLogo, absHeader } = Astro.props;
         </div>
       </div>
     </header>
+  </body>
 
-    <main>
-      <slot />
-    </main>
+  <main>
+    <slot />
+  </main>
 
-    <footer class="bg-gold py-10 md:py-24 mt-12 md:mt-24">
-      <div class="outer">
-        <div class="inner">
-          <img class="md:ml-2 lg:ml-6" src="/logo.svg" alt="logo" />
-          <div class="inner--grid mt-10 md:mt-14">
-            <div class="col-start-1 col-end-13 md:col-start-2 md:col-end-7">
-              <address class="not-italic">
-                Gudbrandsdalens Uldvarefabrik<br />
-                Postboks 836<br />
-                2026 LILLEHAMMER
-              </address>
-              <div class="mt-10 lg:mt-14">
-                Telefon: <a class="underline" href="#">+47 61 22 15 00</a><br />
-                E-post: <a class="underline" href="#">gu@gu.no</a>
-              </div>
+  <footer class="bg-gold py-10 md:py-24 mt-12 md:mt-24">
+    <div class="outer">
+      <div class="inner">
+        <img class="md:ml-2 lg:ml-6" src="/logo.svg" alt="logo" />
+        <div class="inner--grid mt-10 md:mt-14">
+          <div class="col-start-1 col-end-13 md:col-start-2 md:col-end-7">
+            <address class="not-italic">
+              Gudbrandsdalens Uldvarefabrik<br />
+              Postboks 836<br />
+              2026 LILLEHAMMER
+            </address>
+            <div class="mt-10 lg:mt-14">
+              Telefon: <a class="underline" href="#">+47 61 22 15 00</a><br />
+              E-post: <a class="underline" href="#">gu@gu.no</a>
             </div>
-            <div class="col-start-1 col-end-9 md:col-start-7 md:col-end-11 mt-8 md:mt-0">
-              <nav class="flex flex-col">
-                <a class="underline" href="/collections">Kolleksjon</a>
-                <a class="underline" href="#">Nyheter</a>
-                <a class="underline" href="/references">Referanser</a>
-                <a class="underline" href="#">GU mini tekstilskole</a>
-                <a class="underline" href="/about">Om oss</a>
-                <a class="underline" href="/contact">Kontakt</a>
-                <a class="underline" href="#">Netthandel</a>
-                <a class="underline" href="#">Bedrift</a>
-              </nav>
-            </div>
-            <div class="col-start-9 col-end-13 md:col-start-11 md:col-end-13 self-end">
-              <img class="md:w-full" src="/bisnode.png" alt="bisnode" />
-            </div>
+          </div>
+          <div class="col-start-1 col-end-9 md:col-start-7 md:col-end-11 mt-8 md:mt-0">
+            <nav class="flex flex-col">
+              <a class="underline" href="/collections">Kolleksjon</a>
+              <a class="underline" href="#">Nyheter</a>
+              <a class="underline" href="/references">Referanser</a>
+              <a class="underline" href="#">GU mini tekstilskole</a>
+              <a class="underline" href="/about">Om oss</a>
+              <a class="underline" href="/contact">Kontakt</a>
+              <a class="underline" href="#">Netthandel</a>
+              <a class="underline" href="#">Bedrift</a>
+            </nav>
+          </div>
+          <div class="col-start-9 col-end-13 md:col-start-11 md:col-end-13 self-end">
+            <img class="md:w-full" src="/bisnode.png" alt="bisnode" />
           </div>
         </div>
       </div>
-    </footer>
-  </body>
+    </div>
+  </footer>
 </html>

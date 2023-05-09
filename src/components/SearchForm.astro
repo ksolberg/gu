@@ -1,0 +1,10 @@
+<form action="/search" class="h-full" x-show="searchVisible" x-on:click.away="searchVisible = false" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-cloak>
+  <div class="flex items-center relative">
+    <input class="search-input w-full md:w-64 border border-black py-1 lg:py-2 pl-3 pr-8" placeholder="Søk" />
+    <button class="absolute z-[2] right-2">
+      <svg class="fill-current" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.57692 1.75C4.40216 1.75 1.75 4.50349 1.75 8c0 3.4965 2.65216 6.25 5.82692 6.25 3.17478 0 5.82688-2.7535 5.82688-6.25 0-3.49651-2.6521-6.25-5.82688-6.25ZM.25 8C.25 3.76453 3.48701.25 7.57692.25 11.6668.25 14.9038 3.76453 14.9038 8c0 4.2355-3.237 7.75-7.32688 7.75C3.48701 15.75.25 12.2355.25 8Zm19.717 13.967-6.577-7 1.0932-1.0271 6.5769 7-1.0931 1.0271Z"></path>
+      </svg>
+    </button>
+  </div>
+</form>
